@@ -70,7 +70,6 @@ This example shows a customer flagged at 84% churn risk (low tenure, fiber optic
 ---
 
 ## 📁 Project Structure
-```text
 customer-churn-prediction/
 ├── data/
 │   ├── raw/                      # Original Telco Customer Churn dataset
@@ -90,8 +89,6 @@ customer-churn-prediction/
 ├── requirements.txt              # Streamlit + client dependencies
 ├── requirements-api.txt          # FastAPI service dependencies
 └── README.md
-```
-
 
 ---
 
