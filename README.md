@@ -70,31 +70,28 @@ This example shows a customer flagged at 84% churn risk (low tenure, fiber optic
 ---
 
 ## 📁 Project Structure
+```text
 customer-churn-prediction/
-│
 ├── data/
-│   ├── raw/                          # Original Telco Customer Churn dataset
-│   └── processed/                    # Train/test splits, fully encoded
-│
+│   ├── raw/                      # Original Telco Customer Churn dataset
+│   └── processed/                # Train/test splits, fully encoded
 ├── notebooks/
-│   ├── 01_EDA.ipynb                  # Exploratory analysis, churn patterns
-│   ├── 02_preprocessing.ipynb        # Feature engineering, encoding, split
-│   ├── 03_modeling.ipynb             # Baselines, XGBoost, tuning, comparison
-│   └── 04_shap_analysis.ipynb        # SHAP global + individual explanations
-│
+│   ├── 01_EDA.ipynb              # Exploratory analysis, churn patterns
+│   ├── 02_preprocessing.ipynb    # Feature engineering, encoding, split
+│   ├── 03_modeling.ipynb         # Baselines, XGBoost, tuning, comparison
+│   └── 04_shap_analysis.ipynb    # SHAP global + individual explanations
 ├── models/
-│   ├── churn_model.pkl               # Final tuned XGBoost model
-│   └── feature_columns.pkl           # Exact column order for inference
-│
+│   ├── churn_model.pkl           # Final tuned XGBoost model
+│   └── feature_columns.pkl       # Exact column order for inference
 ├── api/
-│   └── main.py                       # FastAPI backend — /predict endpoint
-│
-├── reports/                          # Saved charts from notebooks
-│
-├── app.py                            # Streamlit dashboard (calls the API)
-├── requirements.txt                  # Streamlit + client dependencies
-├── requirements-api.txt              # FastAPI service dependencies
+│   └── main.py                   # FastAPI backend — /predict endpoint
+├── reports/                      # Saved charts from notebooks
+├── app.py                        # Streamlit dashboard (calls the API)
+├── requirements.txt              # Streamlit + client dependencies
+├── requirements-api.txt          # FastAPI service dependencies
 └── README.md
+```
+
 
 ---
 
