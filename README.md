@@ -70,25 +70,34 @@ This example shows a customer flagged at 84% churn risk (low tenure, fiber optic
 ---
 
 ## 📁 Project Structure
+
+```
 customer-churn-prediction/
+│
 ├── data/
-│   ├── raw/                      # Original Telco Customer Churn dataset
-│   └── processed/                # Train/test splits, fully encoded
+│   ├── raw/                          # Original Telco Customer Churn dataset
+│   └── processed/                    # Train/test splits, fully encoded
+│
 ├── notebooks/
-│   ├── 01_EDA.ipynb              # Exploratory analysis, churn patterns
-│   ├── 02_preprocessing.ipynb    # Feature engineering, encoding, split
-│   ├── 03_modeling.ipynb         # Baselines, XGBoost, tuning, comparison
-│   └── 04_shap_analysis.ipynb    # SHAP global + individual explanations
+│   ├── 01_EDA.ipynb                  # Exploratory analysis, churn patterns
+│   ├── 02_preprocessing.ipynb        # Feature engineering, encoding, split
+│   ├── 03_modeling.ipynb             # Baselines, XGBoost, tuning, comparison
+│   └── 04_shap_analysis.ipynb        # SHAP global + individual explanations
+│
 ├── models/
-│   ├── churn_model.pkl           # Final tuned XGBoost model
-│   └── feature_columns.pkl       # Exact column order for inference
+│   ├── churn_model.pkl               # Final tuned XGBoost model
+│   └── feature_columns.pkl           # Exact column order for inference
+│
 ├── api/
-│   └── main.py                   # FastAPI backend — /predict endpoint
-├── reports/                      # Saved charts from notebooks
-├── app.py                        # Streamlit dashboard (calls the API)
-├── requirements.txt              # Streamlit + client dependencies
-├── requirements-api.txt          # FastAPI service dependencies
+│   └── main.py                       # FastAPI backend endpoint
+│
+├── reports/                          # Saved charts from notebooks
+│
+├── app.py                            # Streamlit dashboard (calls the API)
+├── requirements.txt                  # Streamlit + client dependencies
+├── requirements-api.txt              # FastAPI service dependencies
 └── README.md
+```
 
 ---
 
@@ -97,18 +106,40 @@ customer-churn-prediction/
 ```bash
 git clone https://github.com/syedibrahimdev/customer-churn-prediction.git
 cd customer-churn-prediction
-pip install -r requirements.txt
+```
+
+> ⚠️ **Note:** the API and dashboard use separate virtual environments due to a dependency conflict between the Streamlit and FastAPI versions used in this project (both depend on incompatible `starlette` versions). Two `venv`s avoid this — a normal pattern for real production systems, where the API and frontend also run as independent services.
+
+**Setup — API environment:**
+```bash
+python -m venv venv
+# Windows:
+.\venv\Scripts\activate
+# macOS/Linux:
+source venv/bin/activate
+
 pip install -r requirements-api.txt
 ```
 
-**Terminal 1 — API:**
+**Setup — Dashboard environment:**
+```bash
+python -m venv venv-streamlit
+# Windows:
+.\venv-streamlit\Scripts\activate
+# macOS/Linux:
+source venv-streamlit/bin/activate
+
+pip install -r requirements.txt
+```
+
+**Run — Terminal 1 (API, using `venv`):**
 ```bash
 cd api
 uvicorn main:app --reload --port 8000
 ```
 Visit `http://localhost:8000/docs` to test it directly.
 
-**Terminal 2 — Dashboard:**
+**Run — Terminal 2 (Dashboard, using `venv-streamlit`):**
 ```bash
 streamlit run app.py
 ```
